@@ -1,7 +1,7 @@
 # Site settings
 title: Programmable Production
 email: david@programmableproduction.com
-description: How devops are transforming our environment as code
+description: Manage your infrastructure like source code
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://programmableproduction.com" # the base hostname & protocol for your site
 github_username:  programmableproduction
