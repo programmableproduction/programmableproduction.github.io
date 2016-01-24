@@ -1,0 +1,11 @@
+pacman package to install
+--------
+- xorg-server
+- xf86-video-vesa
+- dialog
+- lightdm
+- lightdm-gtk-greeter
+- xmobar
+- trayer
+- xscreesaver
+- network-manager-applet
