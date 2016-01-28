@@ -10,5 +10,4 @@ github_username:  programmableproduction
 markdown: kramdown
 
 kramdown:
-    input: GFM
-    syntax_highlighter: rouge
+    input: GFM 
