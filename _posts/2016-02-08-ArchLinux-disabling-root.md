@@ -1,7 +1,6 @@
 ---
 layout: post
 title: ArchLinux - disabling root
-published: true
 Categories: ArchLinux
 Tags: ArchLinux, Users
 ---
