@@ -1,7 +1,6 @@
 ---
 layout: post
 title: ArchLinux - disabling root
-published: true
 Categories: ArchLinux
 Tags: ArchLinux, Users
 ---
@@ -14,7 +13,8 @@ In this post I will focus on the creation of a user account, installing and sett
 Following the reboot of your ArchLinux installation you will be asked to connect. Use root and the password you set up in the previous article.
 
 We are going to create a new account and add it to the 'wheel' group by default. The group _wheel_ is a group that allows you to run some restricted commands from that user. As I want this account to be an advanced power user, this is the group I want to be part of.
-````shell
+
+```shell
 useradd -m -g wheel [account name]
 passd [account name]
 ```  
@@ -32,6 +32,7 @@ pacman -S sudo
 ### Setting sudo
 
 We have to edit the sudo configuration file to grant the permission. Editing the sudo configuration needs to to be done using visudo. This ensures when we are saving the file that it is valid and wont lock us.  
+
 ```shell
 visudo
 ```  
@@ -53,6 +54,7 @@ Follow this link if you want to read more about [sudo](https://wiki.archlinux.or
 Disabling the *root* account is not mandatory, but is strongly recommended as everyone knows the root account on Linux.  
 
 1. Disconnect from the current root session
+
 ```shell
 exit
 ``` 
@@ -60,6 +62,7 @@ exit
 
 3. Disable root
 The best way to disable the root account is to lock it. For that run the following command.  
+
 ```shell
 sudo passwd -l root
 ```  
