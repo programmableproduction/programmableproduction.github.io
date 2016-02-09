@@ -53,14 +53,9 @@ Follow this link if you want to read more about [sudo](https://wiki.archlinux.or
 
 Disabling the *root* account is not mandatory, but is strongly recommended as everyone knows the root account on Linux.  
 
-1. Disconnect from the current root session
-
-```shell
-exit
-``` 
-2. Connect with your user account
-
-3. Disable root
+- Disconnect from the current root session
+- Connect with your user account
+- Disable root
 The best way to disable the root account is to lock it. For that run the following command.  
 
 ```shell
