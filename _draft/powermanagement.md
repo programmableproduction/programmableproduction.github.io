@@ -1,14 +1,17 @@
-It's now time to look at how to properly setup the power management option on this new installation. As a non Linix expert, it took me some time and some failure to arrive at the expect comfiguration. I didn't want to use any helper script and wanted to setup everything using 'systemd'.
+---
+layout: post
+title: Archlinux enabling hibernation
+categories: Archlinux
+tags: Archlinux, PowerManagement
+---
 
-The final setup I arrive is using a file swap at locate at the root of the file system as the swap that will be used for the hibernation node that I want to have as the default when I close the lid. I personnally perfer the hibernation as the suspend because they are no more energy used. it's true it's slower to restart, however you are back at the same point as when you left it.
+It's now time to look at how to enable hibernation to a swapfile when we close the lid of the laptop. As a non Linux expert, it took me some time and some failure to arrive at the expect comfiguration. I didn't want to use any helper script and wanted to setup everything using 'systemd'. I want to enable hibernation because I want to have the hability to restart where I left the system without  consuming any energy. This is really important. It true that restarting the computer will be slower, however this is a compromise that I accept, and will be let visible when I will use a more resent laptop with SSD.
 
 The final instruction to do that are quite small at the end, however you can read more information about what it in the following link
 - [Arch linux - Power management][https://wiki.archlinux.org/index.php/Power_management]
 - [Arch linux - Power management/suspend and hibernate][https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate]
 - [Arch linux - Swap][https://wiki.archlinux.org/index.php/Swap#Swap_file_resuming]
 - [Arch Linux - Grub][https://wiki.archlinux.org/index.php/GRUB#Generate_the_main_configuration_file] 
-
-In the second part of that post I will cover as well the screen management like automatic turn off of the screen or change the screen intensity. This are important factor that will help the laptop to keep the battery alive.
 
 # Setting up Hibernate mode.
 In this section I will cover how to setup your ArchLinux to use a file swap to hibernate. This require a few change in the way we are starting the kernel as well as some subtility with the creation. So let start 
@@ -36,13 +39,66 @@ Before been able to use it, we need to format it. Same as when when create the s
 sudo mkswap /swapfile
 ```
 
-- enable the swap file
-    sudo swapon /swapfile
+### Enable the swap file
+Same as when we installed archlinux, we have to enable the new swap file in the system with the command *swapon*
 
-- edit /etc/fstab
-    add /swapfile none swap defaults 0 0
+```shell    
+sudo swapon /swapfile
+```
+### Add new swap file entry into */etc/fstab*
+Edit the file */etc/fstab* and add the following file. This discribe the information about how to mount the new swap file as a file system
+
+```    
+/swapfile none swap defaults 0 0
+```
+The content of your file should look like 
+![fstab][/pictures/fstab.png] 
+
+Great, We have a new swap partition which is just a simple file. We will use that to enable the hibernation to happen. 
+
+## Update the kernel startup parameter using grub
+We have to pass two news arguments to the startup kernel. 
+
+- **resume** : Give to the kernel the drive that contain the hibernate swap. This parameter is enough alone if you are not using a file swap
+- **resume_offset** : Inform the kernel the offset for the start of the swap file on the partition.
+
+As we are using grub as our bootloader we will update it's configuration to start the kernel with this flag
+
+### Open /etc/default/grub
+### Add parameter *resume*
+In the command line XXX of the file we need to add the parameter resume with the drive name that contain our swap file. In the case of my machine this file is located on the drive /dev/sda2. The parameter to is
+
+```
+resume=/dev/sda2
+```
+
+### Add parameter *resume_offset*
+Before adding this paramter we need to find the value we need for the offset. The simpliest solution using build in command is running the following command
+
+```shell
+sudo filefrag -v /swapfile
+```
+The result of the command should look like that
+![filefrag result][/pictures/filefrag/png]
+
+The value we want is from the first row the column *physical_offset*. In my case 79872. Now that we have this value we need to add this parameter to our startup kernel
+
+```
+resume_offset=79872
+```
+
+### Generating the new grub.cfg configuration file
+This can be simply done using the command line tool *grub-mkconfig* with the option of the location for the output file. 
+
+```shell
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+
 
 - set kernel parameter reusme=/swapfile using grub
     - Edit /etc/default/grub
     - Add resume=/swapfile in teh line GRUB_CMDLINE_LINUX_DEFAULT
-    - regenerate the grub file grub.cfg using grub-mkconfig -o /boot/grub/grub.cfg
+    - regenerate the
+
+ grub file grub.cfg using grub-mkconfig -o /boot/grub/grub.cfg
