@@ -1,9 +1,8 @@
 ---
 layout: post
 title: ArchLinux - Using netctl to setup the network
-published: true
 categories: ArchLinux
-tags: ArchLinux, network
+tags: ArchLinux, network, netctl
 ---
 
 For this article we will focus on network setup (at least what I've found so far) and will look at some of the useful commands that I now use often.
@@ -131,12 +130,15 @@ The information below come from the Archlinux Wiki on [netctl][https://wiki.arch
 ### Ethernet
 So far you can only connect using the command line *netctl*. This is great, however it would be even better if when you plug-in an ethernet cable your computer reconize it and get automatically an IP address. Luckilly they are a service that you can install that know how to read the *netctl* config file and which will automatically handle the connection. The package is named *ifplugd*.
 
-1. Install ifplugd
+- Install ifplugd
+
 ```shell
 sudo pacman -S ifplugd
 ```
-2. Enable the service
+
+- Enable the service
 Please note that you need to replace *enp3s0* with the identifier of your network interface.
+
 ```shell
 sudo systemctl enable netctl-ifplugd@enp3s0.service
 ```
@@ -145,12 +147,15 @@ sudo systemctl enable netctl-ifplugd@enp3s0.service
 I will provide you as well the way for the Wifi connection to automatically witch between your available profile and pick up the best one. Personally I don't like my computer to do think for me and I don't mind typing one command to connect, so I haven't enabled this service. I feel as well it's more secure that way.
 The service that allow auto connection of wifi profile is named *wpa_actiond*.
 
-1. Install wpa_actiond
+- Install wpa_actiond
+
 ```shell
 sudo pacman -S wpa_actiond
 '''
-2. Enable the service
+
+- Enable the service
 Please note tht you need to replace teh *wlp1s0* wuth the identifier of your wifi interface
+
 ```
 sudo systemctl enable netctl-auto@wlp1s0.service
 ```
