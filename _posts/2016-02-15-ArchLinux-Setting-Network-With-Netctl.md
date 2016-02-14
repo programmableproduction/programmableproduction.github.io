@@ -151,7 +151,7 @@ The service that allow auto connection of wifi profile is named *wpa_actiond*.
 
 ```shell
 sudo pacman -S wpa_actiond
-'''
+```
 
 - Enable the service
 Please note tht you need to replace teh *wlp1s0* wuth the identifier of your wifi interface
