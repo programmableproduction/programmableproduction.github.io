@@ -5,9 +5,3 @@ description: Manage your infrastructure like source code
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://programmableproduction.com" # the base hostname & protocol for your site
 github_username:  programmableproduction
-
-# Build settings
-markdown: kramdown
-
-kramdown:
-    input: GFM 
