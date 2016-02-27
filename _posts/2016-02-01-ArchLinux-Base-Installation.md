@@ -145,7 +145,7 @@ echo archlinuxEeePC > /etc/hostname
 As we are installing ArchLinux on a laptop it is useful to install some  network tool to be able to reconnect after the reboot. The package netctl allows you to manage configuration using profiles. We are also going to install a dialog to allow the command *wifi-menu* that we used earlier to work.  
     
 ```shell
-pacman -S netctl dialog
+pacman -S wpa_supplicant netctl dialog
 ```  
 
 ### Installing and Setting Grub boot loader
@@ -161,7 +161,7 @@ Here's the commands to run:
 ```shell
 pacman -S grub-bios
 grub-install /dev/sda
-mkinitcpio -p Linux
+mkinitcpio -p linux
 grub-mkconfig -o /boot/grub/grub.cfg
 ```  
 
