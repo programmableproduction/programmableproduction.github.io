@@ -51,3 +51,7 @@ You can now wait for sometime as the source code is quite big to build.
 
 # Summary
 After so failure to build CoreCRL on x86 which is not supported on Linux at the moment, I have been able to build it on x64 after finding all the dependency that are required. In the next post I will look at how to build CoreFX which contain the base .Net library.
+
+## Update 20 April 2016
+The instruction above are good, and allow to build all the native library of the coreclr, however you cannot build mscorelib because it rely on an external package that we download and which has been build using older base library than the one we have on ArchLinux. 
+You will be able to find more information on a latest post.
