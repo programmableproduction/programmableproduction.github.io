@@ -4,7 +4,7 @@ title: CoreClr problem with ICU dependency on Linux
 categories: Archlinux, CoreCRL
 tags: Archlinux, CoreCRL, UCI
 ---
-This post follow the previous on a building .Net CoreClr on ArchLinux. The instruction that are there are right, however they are still a problem about building mscorelib.dll on Archlinux. I will summarise the problem, how I investigated the root cause and some solution that I'm looking at to merge back to the CoreClr github repository.
+This post follows the [previous article]({{ site.url }}/2016/04/08/Building-CoreClr-On-ArchLinux/) about building .Net CoreClr on ArchLinux. The instruction that are in that post  show you how to install the dependency for ArchLinux, however they are still a problem about building mscorelib.dll on Archlinux. I will summarise the problem, how I investigated the root cause and some solution that I'm looking at to merge back to the CoreClr github repository later.
 
 # The problem
 The build process of the .Net CoreClr is mainly building some C++ native library (like JIT, PAL) which are doing the translation of IL code to machine code and all the platform abstraction layer. The last build step is building mscorelib.dll which is the base library of .Net. However this is failing with the below error 
@@ -160,7 +160,33 @@ Look like downgrading made dotnet dependency problem going away. However this ha
 
 ## Copying the Native lib build on the machine
 Before doing that you need to be sure your system is update to date by running ```sudo pacman -Syu``` and building coreclr using ```./build.sh clean skipmscorlib```. When you are done with that tasks, you can look at copying the freshly build "System.Globalization.Native.so" to the folder where ```dotnet``` is picking it.
+We can now see that we have a dependency with ICU version 57 present in the machine.
 
+```shell
+[david@dc-archlinux-1 coreclr]$ ldd bin/Product/Linux.x64.Debug/System.Globalization.Native.so 
+        linux-vdso.so.1 (0x00007ffffe3d9000)
+        libicuuc.so.57 => /usr/lib/libicuuc.so.57 (0x00007feb90e9a000)
+        libicui18n.so.57 => /usr/lib/libicui18n.so.57 (0x00007feb90a20000)
+        libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0x00007feb9069d000)
+        libm.so.6 => /usr/lib/libm.so.6 (0x00007feb90398000)
+        libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x00007feb90182000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007feb8fde0000)
+        libicudata.so.57 => /usr/lib/libicudata.so.57 (0x00007feb8e364000)
+        libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007feb8e147000)
+        libdl.so.2 => /usr/lib/libdl.so.2 (0x00007feb8df42000)
+        /usr/lib64/ld-linux-x86-64.so.2 (0x00005569e3704000)
+```
 
+either of the above solution help to produce the expected result... Just getting the version of the dotnet exec
+
+```shell
+[david@dc-archlinux-1 coreclr]$ Tools/dotnetcli/dotnet --version                             
+1.0.0-beta-002173
+
+```
+
+# Summary
+This was a first good initiation at how to use and check dependency problem in Linux. We found some solution that allow to temporary fix the problem and we will look in a later article about a proper way to address that. Even that fix the first error, dotnet still have problem when we try to restore the package from nuget related this time about the network which I will show how to fix in the next post.
+So far just building CoreClr on ArchLinux prove to be more challenging than I expected and make me go inside to understand the process better. I cannot find better introduction.
 
 This library is written in C# and required a .Net Csharp compiler. In 2015 this step was done using the Mono .Net runtime
