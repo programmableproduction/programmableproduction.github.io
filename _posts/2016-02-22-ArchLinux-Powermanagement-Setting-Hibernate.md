@@ -55,7 +55,7 @@ Edit the file */etc/fstab* and add the following file. This discribe the informa
 /swapfile none swap defaults 0 0
 ```
 The content of your file should look like 
-![fstab][{{ site.url }}/pictures/fstab.png] 
+![fstab]({{ site.url }}/pictures/fstab.png) 
 
 Great, We have a new swap partition which is just a simple file. We will use that to enable the hibernation to happen. 
 
@@ -99,12 +99,12 @@ This can be simply done using the command line tool *grub-mkconfig* with the opt
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Update mktinitcpio
-'*mkinitcpio* is a batsh script that create an initial ramdisk environment'. You can find more information [mkinitcpio](https://wiki.archlinux.org/index.php/Mkinitcpio).
+## Update mkinitcpio
+'*mkinitcpio* is a batsh script that create an initial ramdisk environment'. You can find more information [mkinitcpio](https://wiki.archlinux.org/index.php/mkinitcpio).
 We need to update the startup hook to add the resume one. This will ensure that the system can restore from the hibernation.
 
-### Add resume hook to /etc/mktinitcpio.conf
-We have to edit in the file */etc/mktinitcpio.conf* the section *HOOK*. This section control the module that are been loaded into the image at boot time. You need to add in the set of argument there the *resume* one.
+### Add resume hook to /etc/mkinitcpio.conf
+We have to edit in the file */etc/mkinitcpio.conf* the section *HOOK*. This section control the module that are been loaded into the image at boot time. You need to add in the set of argument there the *resume* one.
 
 For example my current section is looking like that.
 ![mkinitcpio Hooks]({{ site.url }}/pictures/mkinitcpio_hook.png)
