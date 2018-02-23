@@ -4,7 +4,7 @@ title: CoreClr problem with ICU dependency on Linux
 categories: Archlinux, CoreCRL
 tags: Archlinux, CoreCRL, UCI
 ---
-This post follows the [previous article]({{ site.url }}/2016/04/08/Building-CoreClr-On-ArchLinux/) about building .Net CoreClr on ArchLinux. The instruction that are in that post  show you how to install the dependency for ArchLinux, however they are still a problem about building mscorelib.dll on Archlinux. I will summarise the problem, how I investigated the root cause and some solution that I'm looking at to merge back to the CoreClr github repository later.
+This post follows the [previous article](/2016/04/08/Building-CoreClr-On-ArchLinux/) about building .Net CoreClr on ArchLinux. The instruction that are in that post  show you how to install the dependency for ArchLinux, however they are still a problem about building mscorelib.dll on Archlinux. I will summarise the problem, how I investigated the root cause and some solution that I'm looking at to merge back to the CoreClr github repository later.
 
 # The problem
 The build process of the .Net CoreClr is mainly building some C++ native library (like JIT, PAL) which are doing the translation of IL code to machine code and all the platform abstraction layer. The last build step is building mscorelib.dll which is the base library of .Net. However this is failing with the below error 

@@ -55,7 +55,7 @@ Edit the file */etc/fstab* and add the following file. This discribe the informa
 /swapfile none swap defaults 0 0
 ```
 The content of your file should look like 
-![fstab]({{ site.url }}/pictures/fstab.png) 
+![fstab](/pictures/fstab.png) 
 
 Great, We have a new swap partition which is just a simple file. We will use that to enable the hibernation to happen. 
 
@@ -84,7 +84,7 @@ sudo filefrag -v /swapfile
 ```
 
 The result of the command should look like that
-![filefrag result]({{ site.url }}/pictures/filefrag.png)
+![filefrag result](/pictures/filefrag.png)
 
 The value we want is from the first row the column *physical_offset*. In my case 79872. Now that we have this value we need to add this parameter to our startup kernel
 
@@ -107,7 +107,7 @@ We need to update the startup hook to add the resume one. This will ensure that 
 We have to edit in the file */etc/mkinitcpio.conf* the section *HOOK*. This section control the module that are been loaded into the image at boot time. You need to add in the set of argument there the *resume* one.
 
 For example my current section is looking like that.
-![mkinitcpio Hooks]({{ site.url }}/pictures/mkinitcpio_hook.png)
+![mkinitcpio Hooks](/pictures/mkinitcpio_hook.png)
 
 ### Generate the images
 The command we need to use to generate this boot image is *mkinitcpio*. The default setup is reading the information from the configuration file */etc/mkinitcpio.conf*. As we want to generate the base image for in the default ArchLinux path we can use the option *-p*. The command we have to run on elevated mode is.

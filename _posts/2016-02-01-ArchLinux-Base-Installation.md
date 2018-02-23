@@ -22,10 +22,10 @@ choco install yumi```
 ## Creating the USB Boot drive
 
 1. Open Yumi and set the parameters as below. Don't forget to check "*we Will Fat32 Format F: Drive!* "  
-   ![Yumi setting]({{ site.url }}/pictures/Yumi Setting.png)  
+   ![Yumi setting](/pictures/Yumi Setting.png)  
 
 2. Click "*Create*" and wait for the creation of boot USB key
-   ![Yumi Running]({{ site.url }}/pictures/Yumi Running.png)
+   ![Yumi Running](/pictures/Yumi Running.png)
 
 # Installation of Arch Linux
 
@@ -41,11 +41,11 @@ You need to boot your computer using the USB key we made above.
 You can select the installation you want to do. In our case we want to install the i686 which is the 32 bits version of Arch Linux.  
 if you want to install a 64 bits version of ArchLinux you will have to select x86_64
 
-![Arch Install]({{ site.url }}/pictures/01 - ArchLinux Boot Screen.png)  
+![Arch Install](/pictures/01 - ArchLinux Boot Screen.png)  
 
 This will bring you to the basic command prompt. This prompt is the one of the installation OS which is hosted on the USB Key
 
-![Arch base prompt]({{ site.url }}/pictures/02 - ArchLinux Startup prompt.png)  
+![Arch base prompt](/pictures/02 - ArchLinux Startup prompt.png)  
 
 ### Find the install drive name 
 Before we start installing ArchLinux we need to find the main drive that will be used to install it. Run the command.  
@@ -56,7 +56,7 @@ fdisk -l
  
 This will list all the disk you have on your machine. In my case the command returns this: 
 
-![fdisk result]({{ site.url }}/pictures/03 - ArchLinux fdisk result.png)
+![fdisk result](/pictures/03 - ArchLinux fdisk result.png)
 
 You should see something similar to that. In my case the drive on which I want to install Arch Linux is */dev/sda*
 
