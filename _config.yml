@@ -1,13 +1,29 @@
 # Site settings
 title: Programmable Production
-email: david@programmableproduction.com
-description: Manage your infrastructure like source code
+description: >
+    Manage your infrastructure like source code
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://programmableproduction.com" # the base hostname & protocol for your site
-github_username:  programmableproduction
-permalink: /:year/:month/:day/:title/
-# Build settings
-markdown: kramdown
 
+#Author Settings
+author: David Zucker
+author-img: david-zucker.jpg
+author-about: I'm a developer who like to discover way to help the life of developer 
+
+social-github:  davzucky
+social-email: david@programmableproduction.com
+social-linkedin: david-zucker-5909a01
+
+permalink: /:year/:month/:day/:title/
+
+#Disqus
+disqus-identifier: programmableproduction
+
+# Build settings
 kramdown:
     input: GFM
+    hard_wrap: false
+future: true
+jailed: false
+#theme: jekyll-theme-primer
+#gfm_quirks: paragraph_end
