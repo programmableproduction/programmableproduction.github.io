@@ -26,7 +26,7 @@ One of the best answer are from the following [stackoverflow question](http://un
 xmonad is a tilling windows manager. This mean that the windows are automatically disposed for you to maximized the most they can the desktop. All the windows disposition are control using only the keyboard without the need of the mouse.
 The program is written on haskell and you configure it as well using haskell.
 
-[![desktop sample](/pictures/desktop_S.png)](/pictures_L.png))
+[![desktop sample](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/desktop_S.png)](/pictures_L.png))
 
 ## Installation of xmonad
 The installation of the windows manager xmonad has some dependency on  [X-windows]( https://en.wikipedia.org/wiki/X_Window_System)  which is basic framework for GUI in linux. We will install all of that at the same time as xmonad.

@@ -3,7 +3,9 @@ layout: post
 title: Archlinux base installation
 categories: Archlinux
 tags: Archlinux, Installation
+imagesfolder: 2016-02-01-ArchLinux-Base-Installation
 ---
+
 After years on Windows and having on the side this old Asus EeePC 11010HA collecting dust in storage I decided to give it a second life following the discovery of [Arch Linux](https://www.archlinux.org) and [Xmonad](http://xmonad.org/) from a friend who is working on a startup.
 I've tried a lot of other windows and Linux distributions on this machine in the past without success, mainly relating to the video driver which is the Intel GMA500.  This post summarizes how to set up Arch Linux on a laptop.
 I will set up this machine as a Linux development machine until I feel confident that I can do a full switch of my main PC.
@@ -22,10 +24,10 @@ choco install yumi```
 ## Creating the USB Boot drive
 
 1. Open Yumi and set the parameters as below. Don't forget to check "*we Will Fat32 Format F: Drive!* "  
-   ![Yumi setting](/pictures/Yumi Setting.png)  
+   ![Yumi setting](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/Yumi_Setting.png)  
 
 2. Click "*Create*" and wait for the creation of boot USB key
-   ![Yumi Running](/pictures/Yumi Running.png)
+   ![Yumi Running](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/Yumi Running.png)
 
 # Installation of Arch Linux
 
@@ -34,18 +36,17 @@ I've added some information during the initial installation process, like instal
 
 ## Instructions
 
-
 You need to boot your computer using the USB key we made above.
 
 ### Arch Linux Version Selection
 You can select the installation you want to do. In our case we want to install the i686 which is the 32 bits version of Arch Linux.  
 if you want to install a 64 bits version of ArchLinux you will have to select x86_64
 
-![Arch Install](/pictures/01 - ArchLinux Boot Screen.png)  
+![Arch Install](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/01 - ArchLinux Boot Screen.png)  
 
 This will bring you to the basic command prompt. This prompt is the one of the installation OS which is hosted on the USB Key
 
-![Arch base prompt](/pictures/02 - ArchLinux Startup prompt.png)  
+![Arch base prompt](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/02 - ArchLinux Startup prompt.png)  
 
 ### Find the install drive name 
 Before we start installing ArchLinux we need to find the main drive that will be used to install it. Run the command.  
@@ -56,7 +57,7 @@ fdisk -l
  
 This will list all the disk you have on your machine. In my case the command returns this: 
 
-![fdisk result](/pictures/03 - ArchLinux fdisk result.png)
+![fdisk result](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/03 - ArchLinux fdisk result.png)
 
 You should see something similar to that. In my case the drive on which I want to install Arch Linux is */dev/sda*
 

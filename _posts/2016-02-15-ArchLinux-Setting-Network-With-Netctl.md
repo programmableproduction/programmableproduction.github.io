@@ -34,7 +34,7 @@ ip link
 ```  
   
 The result of the query is in my case
-![IpLinkResult](/pictures/IpLinkResult.png)  
+![IpLinkResult](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/IpLinkResult.png)  
   The ethernet adaptor name starts everytime with *enp* - in my case the name is *enp3s0*  
 
 ### Copy the example */etc/netctl/example/ethernet-dhcp* to */etc/netctl*  
@@ -49,7 +49,7 @@ cp /etc/netctl/example/ethernet-dhcp /etc/netctl/enp3s0-ethernet-dhcp
 You can use any text editor that you want - *vim* is the one I'm using every time. We want to open */etc/netctl/enp3s0-ethernet-dhcp* to change the property *Interface* with the one we found at step 1.
 The content you should have in the file at minimum is :
 
-![profile Content](/pictures/enp3s0-ethernet-dhcp-Content.png)
+![profile Content](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/enp3s0-ethernet-dhcp-Content.png)
 
 ### Check the permission
 The profile we just updated is good, however this is not protected against being seen by unauthorised users. This profile doesn't have a lot of important information, although it will do later on for the wifi setup. We will change the password using the command line *chmod* and set read/write only for the root users.  
@@ -82,7 +82,7 @@ sudo wifi-menu -o
 
 You will see the following displayed:
 
-![wifi-menu](/pictures/wifi-menu.png)
+![wifi-menu](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/wifi-menu.png)
 
 Creating a wifi profile is simple with the use of *wifi-menu*. However you can also create a wifi profile using the same type of manual steps as we used to set up the ethernet connection. The hardest part I found about doing that is that you need to know the wifi security type and you may have to put your password in clear.
 
@@ -100,7 +100,7 @@ netctl list
 ```
 
 The output of that command will look like that.
-![netctl-list](/pictures/netctl-list.png)
+![netctl-list](/assets/posts/{{page.id | replace:'/','-' | remove_first: '-' }}/netctl-list.png)
 
 ### Starting and stoping profile
 *netctl* allow to start and stop connection profile. This command require root permission and need to be run under *sudo*.
