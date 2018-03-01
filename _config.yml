@@ -1,14 +1,14 @@
 # Site settings
 title: Programmable Production
 description: >
-    Manage your infrastructure like source code
+    For developer who want to learn devops
 baseurl: "" # the subpath of your site, e.g. /blog/
 #url: "http://programmableproduction.com" # the base hostname & protocol for your site
 
 #Author Settings
-author: David Zucker
+author: Programmable Production
 author-img: david-zucker.jpg
-author-about: I'm a developer who like to discover way to help the life of developer 
+author-about: For developer who like to cross the line to devops  
 
 social-github:  davzucky
 social-email: david@programmableproduction.com
@@ -19,11 +19,17 @@ permalink: /:year/:month/:day/:title/
 #Disqus
 disqus-identifier: programmableproduction
 
+# markdown: kramdown
+
 # Build settings
-kramdown:
-    input: GFM
-    hard_wrap: false
-future: true
-jailed: false
+# kramdown: kramdown
+#     input: GFM
+#     hard_wrap: false
+# future: true
+# jailed: false
 #theme: jekyll-theme-primer
 #gfm_quirks: paragraph_end
+
+#Move the sass folder under assets
+sass:
+     sass_dir: assets/css
