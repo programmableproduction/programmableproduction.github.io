@@ -50,7 +50,15 @@
       margin-bottom: 10px;
     }
 }
+.article-page{
+  width: 100%;
+  max-width: 100;  
+}
 
+.home{
+  width: 100%;
+  max-width: 100;  
+}
   .content-box {
     padding: 20px 10px;
     display: flex;
@@ -71,6 +79,11 @@
     padding: 5px;
   }
   .article-page{
+    width: 100%;
+    max-width: 100;  
+  }
+
+  .home{
     width: 100%;
     max-width: 100;  
   }
