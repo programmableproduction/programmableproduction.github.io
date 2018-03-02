@@ -3,12 +3,12 @@ title: Programmable Production
 description: >
     For developer who want to learn devops
 baseurl: "" # the subpath of your site, e.g. /blog/
-#url: "http://programmableproduction.com" # the base hostname & protocol for your site
+#url: "http://blog.programmableproduction.com" # the base hostname & protocol for your site
 
 #Author Settings
 author: Programmable Production
 author-img: david-zucker.jpg
-author-about: For developer who like to cross the line to devops  
+author-about: For developer who like to learn about devops  
 
 social-github:  davzucky
 social-email: david@programmableproduction.com
@@ -18,17 +18,6 @@ permalink: /:year/:month/:day/:title/
 
 #Disqus
 disqus-identifier: programmableproduction
-
-# markdown: kramdown
-
-# Build settings
-# kramdown: kramdown
-#     input: GFM
-#     hard_wrap: false
-# future: true
-# jailed: false
-#theme: jekyll-theme-primer
-#gfm_quirks: paragraph_end
 
 #Move the sass folder under assets
 sass:
