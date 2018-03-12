@@ -21,6 +21,7 @@ disqus-identifier: programmableproduction
 
 #google analytic
 google-analytics: UA-73704356-1
+google-site-verification: 1HoCUONq0k9sykDYxzVYL3pbrm1hiEraInE8GN_BaRA
 
 #Move the sass folder under assets
 sass:
