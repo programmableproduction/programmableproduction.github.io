@@ -19,6 +19,9 @@ permalink: /:year/:month/:day/:title/
 #Disqus
 disqus-identifier: programmableproduction
 
+#google analytic
+google-analytics: UA-73704356-1
+
 #Move the sass folder under assets
 sass:
      sass_dir: assets/css
