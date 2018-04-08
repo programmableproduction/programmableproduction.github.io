@@ -77,7 +77,7 @@ sudo pacman -Sy docker-machine
 Minikube and kubectl installation is as simple as using the package available on the AUR.
 
 ``` bash
-yaourt -Sy minikube kubectl-bin  
+yaourt -Sy minikube-bin kubectl-bin  
 ```
 
 ## Installing KVM2 driver for minikube
